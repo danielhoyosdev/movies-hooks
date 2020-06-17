@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container, Typography } from '@material-ui/core';
 
 export default () => (
-	<div>
-		Home
-	</div>
+	<Container>
+		<Typography>Home</Typography>
+	</Container>
 );
