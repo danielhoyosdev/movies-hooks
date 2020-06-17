@@ -6,13 +6,13 @@ const initialState = {}
 export default function(state = initialState, action) {
     switch(action.type) {
         case SEARCH_MOVIE_START:
-            return {...state};
+            return {...state, isLoading: true};
             break;
         case SEARCH_MOVIE_COMPLETE:
-            return {...state};
+            return {...state, isLoading: false, movieResults: action.results.data};
             break;
         case SEARCH_MOVIE_ERROR:
-            return {...state};
+            return {...state, isLoading: false, movies: null};
             break;
         default: 
             return {...state};
