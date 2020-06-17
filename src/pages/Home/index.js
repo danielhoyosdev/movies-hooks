@@ -5,7 +5,7 @@ import { Container, Card, Typography, Grid, TextField, Button } from '@material-
 import makeStyles from './styles';
 import { MovieIcon } from '../../icons';
 
-export default () => {
+export default ({ history }) => {
 	const styles = makeStyles();
 	const [searchText, setSearchText] = useState('');
 
@@ -19,7 +19,7 @@ export default () => {
 
 	const handleSearchMovie = (event) => {
 		if(searchText.length > 0) {
-			console.log("Vamos a buscar la pelicula");
+			history.push(`/results?movieName=${searchText}`);
 		} else {
 			alert("Debes ingresar en nombre de una pelicula");
 		}
