@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Grid, GridList, GridListTile, ListSubheader, CircularProgress } from '@material-ui/core';
+import { Container, Grid, CircularProgress } from '@material-ui/core';
 import queryString from 'query-string';
 
 // Components

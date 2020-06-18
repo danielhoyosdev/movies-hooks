@@ -1,12 +1,15 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 
 import makeStyles from './styles';
 
-const MovieResult = ({ Title, Year, imdbID, Poster }) => {
+const MovieResult = ({ Title, Year, imdbID, Poster, history }) => {
     const styles = makeStyles();
 
-    console.log((Poster === "N/A") ? "NO EXISTE" : "SI EXISTE");
+    const handleSeeMovie = () => {
+        history.push(`/movie/${imdbID}`);
+    }
 
     return (
         <Grid item xs={12} sm={6} md={4} lg={3} className={styles.itemContainer}>
@@ -17,7 +20,7 @@ const MovieResult = ({ Title, Year, imdbID, Poster }) => {
                 <Typography>{Year}</Typography>
 
                 <Grid item align="center">
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={handleSeeMovie}>
                         Ver más
                     </Button>
                 </Grid>
@@ -26,4 +29,4 @@ const MovieResult = ({ Title, Year, imdbID, Poster }) => {
     );
 }
 
-export default MovieResult;
+export default withRouter(MovieResult);
