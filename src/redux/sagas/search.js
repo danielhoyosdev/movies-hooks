@@ -1,5 +1,5 @@
-import { put, call, takeLatest } from 'redux-saga/effects'
 import { SEARCH_MOVIE_START, SEARCH_MOVIE_COMPLETE, SEARCH_MOVIE_ERROR } from '../../consts/actionTypes';
+import { put, call, takeLatest } from 'redux-saga/effects'
 
 import { apiCall } from '../api';
 
