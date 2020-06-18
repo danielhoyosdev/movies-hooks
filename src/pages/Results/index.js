@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Grid, CircularProgress } from '@material-ui/core';
 import queryString from 'query-string';
@@ -17,12 +17,14 @@ export default ({ location }) => {
     const movies = useSelector(state => movieResults(state));
     const isLoading = useSelector(state => isSearchLoading(state));
     const { movieName } = queryString.parse(location.search);
+    const [looked, setLooked] = useState(false);
 
     useEffect(() => {
-        if(movieName && !movies) {
+        if(movieName && !looked) {
             dispatch(searchMovie({ movieName }));
+            setLooked(true);
         }
-    });
+    }, [looked]);
 
     const renderMovies = () => {
         if(movies) {
@@ -33,15 +35,15 @@ export default ({ location }) => {
                     ))}
                 </Grid>
             ); 
-        }else if(isLoading) {
-            return <CircularProgress size="100" color="primary" />
+        }else if(isLoading){
+            return (<CircularProgress size={100} color="primary"/>);
         }
 
         return <div />
     }
 
     return (
-        <Container className={styles.container}>
+        <Container className={styles.container} fixed align="center">
             {renderMovies()}
         </Container>
     )
